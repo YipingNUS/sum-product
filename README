@@ -1,0 +1,5 @@
+Compile the program, run the following command:
+. compile
+
+Run the program:
+java SumProduct

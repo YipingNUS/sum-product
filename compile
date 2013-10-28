@@ -1,0 +1,3 @@
+javac Node.java
+javac Edge.java
+javac SumProduct.java

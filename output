@@ -1,0 +1,48 @@
+passing message upward from 4 TO 2
+send message: 0.55
+send message: 0.9500000000000001
+passing message upward from 5 TO 2
+send message: 0.85
+send message: 0.6499999999999999
+passing message upward from 6 TO 3
+send message: 0.55
+send message: 0.9500000000000001
+passing message upward from 2 TO 1
+send message: 0.324625
+send message: 0.579125
+passing message upward from 3 TO 1
+send message: 0.5275000000000001
+send message: 0.47750000000000004
+passing message downward from 1 TO 2
+send message: 0.85
+send message: 0.6499999999999999
+passing message downward from 1 TO 3
+send message: 0.85
+send message: 0.6499999999999999
+passing message downward from 2 TO 4
+send message: 0.3775
+send message: 0.6275
+passing message downward from 2 TO 5
+send message: 0.3775
+send message: 0.6275
+passing message downward from 3 TO 6
+send message: 0.6925
+send message: 0.49249999999999994
+Collect marginal probability for 1
+0.5909840538709168
+0.40901594612908326
+Collect marginal probability for 2
+0.09910218841573668
+0.9008978115842633
+Collect marginal probability for 3
+0.6385365853658537
+0.36146341463414633
+Collect marginal probability for 4
+0.06265560165975104
+0.9373443983402489
+Collect marginal probability for 5
+0.5839779005524862
+0.4160220994475138
+Collect marginal probability for 6
+0.13512195121951223
+0.8648780487804878
