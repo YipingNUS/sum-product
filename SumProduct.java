@@ -12,7 +12,13 @@ import java.util.LinkedList;
 public class SumProduct
 {
 
-	 //perform the belief propagation algorithm	
+	 /*
+	  * perform the belief propagation algorithm on tree structure
+	  * Args:
+	  * nodeList: list of all the nodes in the graph
+	  * edgeList: list of all the edges in the graph
+	  * root: the root of the tree
+	  */
 	 public void beliefPropagation(ArrayList<Node> nodeList, ArrayList<Edge> edgeList, Node root){
 		 LinkedList<Node> activeNodes = new LinkedList<Node>();
 		 
@@ -25,12 +31,12 @@ public class SumProduct
 		 
 		 while(activeNodes.size()>0){
 			 Node currentNode = activeNodes.pop();
-			 System.out.println(currentNode.getIndex());
+			 //System.out.println(currentNode.getIndex());
 			 if(currentNode.getParent()!=null){
-				 if(!activeNodes.contains(currentNode.getParent())){
-					activeNodes.add(currentNode.getParent());
-				 }
 				 sendMessage(edgeList, currentNode, currentNode.getParent());
+				 //add the parent node to the queue only when it has received msg from all children
+				 if(currentNode.getParent().is_ready(edgeList))  
+					activeNodes.add(currentNode.getParent());
 			 }
 		 }
 		 
@@ -54,6 +60,11 @@ public class SumProduct
 		 }
 	 }
 	 
+	 /*
+	  * send message from sender to receiver
+	  * This method implements sum product algorithm
+	  * The message is an array, each item corresponds to a single outcome of the receiver node
+	  */
 	 public void sendMessage(ArrayList<Edge> edgeList, Node sender, Node receiver){
 		 //message passing upward
 		 if(sender.getParent() == receiver){
@@ -65,7 +76,7 @@ public class SumProduct
 			 double[] message = new double[cur_edge_potential.length];
 			 
 			 for(int i=0;i<cur_edge_potential.length;i++){
-				 double tempMsg = 0.0;
+				 double tempMsg = 0.0;  
 				 for(int j=0;j<cur_edge_potential.length;j++){  //sum loop
 
 					 double product = 1.0;
@@ -83,7 +94,7 @@ public class SumProduct
 			 
 			 cur_edge.upwardMsg = message;
 			 
-		 }else{
+		 }else{  //message passing downward
 			 System.out.println("passing message downward from " +  sender.index + " TO "+ receiver.index);
 			 Edge cur_edge = Edge.getEdgeByNodes(edgeList, sender, receiver);
 			 double[][] cur_edge_potential = cur_edge.potential;
@@ -110,7 +121,9 @@ public class SumProduct
 
 	 }
 	 
-	 //collect the marginal probability of a given node
+	 /*
+	  * collect the marginal probability of a given node
+	  */
 	 public double[] collectMarginal(ArrayList<Edge> edgeList, Node node){
 		 double[] result = new double[node.potential.length];
 		 double[] node_potential = node.potential;
@@ -127,8 +140,8 @@ public class SumProduct
 				 temp_result *= edge.upwardMsg[i];				 
 			 }
 			 result[i] = temp_result * node_potential[i];
-			 
 		 }
+		 
 		 double sum = 0.0;
 		 for(int i=0;i<result.length;i++){
 			 sum += result[i];

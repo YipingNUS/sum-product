@@ -7,6 +7,15 @@
  */
 import java.util.ArrayList;
 
+/*
+ * the data structre to store the edges
+ * Attributes:
+ * parent: the parent node in the edge
+ * child: chile node in the edge
+ * potential: the initial edge potential
+ * upwardMsg: the message passing from child to parent
+ * downwardMsg: the message passing from parent to child
+ */
 public class Edge {
     public double[][] potential;
     public Node parent;
@@ -23,6 +32,9 @@ public class Edge {
     	this.child.setParent(parent);
     }
 
+    /*
+     * get the Edge object by its two vertices
+     */
     public static Edge getEdgeByNodes(ArrayList<Edge> edgeList, Node parent, Node child){
         for(int i=0;i<edgeList.size();i++){
         	if(edgeList.get(i).parent == parent && edgeList.get(i).child == child){
