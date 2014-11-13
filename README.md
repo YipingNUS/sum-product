@@ -9,7 +9,7 @@ This is not intended to be a general purpose toolkit but rather
 just a class assignment.
 
 Compile the program, run the following command:
-  . compile
+>. compile
 
 Run the program:
-  java SumProduct
+>java SumProduct
